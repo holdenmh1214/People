@@ -18,7 +18,7 @@ public class Person implements Comparable{
         this.ip = ip;
     }
 
-    @Override
+    @Override //these overrides are a pain to remember
     public int compareTo(Object o) {
         Person p = (Person) o;
         int result = lastName.compareTo(p.lastName);
@@ -27,6 +27,6 @@ public class Person implements Comparable{
 
     @Override
     public String toString(){
-        return String.format("%s %s from %s", firstName, lastName, countryName);
+        return String.format("%s %s from %s", firstName, lastName, countryName); // doesn't get rid of key and looks dumb
     }
 }

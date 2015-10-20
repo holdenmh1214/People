@@ -16,7 +16,7 @@ public class People {
 
 
         for (String line : lines) {
-            if (i !=0) {
+            if (i !=0) { // ignore first set of information
                 String[] columns = line.split(",");
                 String country = String.valueOf(columns[4]);
                 ArrayList<Person> list = people.get(country);
@@ -31,17 +31,20 @@ public class People {
                 Person person = new Person(id, firstName, lastName, email, countryName, ip);
 
 
-                if (list == null) {
+                if (list == null) { // sort each person by country name
                     list = new ArrayList();
                     list.add(person);
                     people.put(country, list);
                 } else {
                     list.add(person);
                 }
-                Collections.sort(list);
+
             }
 
             i++;
+        }
+        for (ArrayList<Person> list : people.values()) {
+            Collections.sort(list); // sort by last name
         }
 
         System.out.println(people);
